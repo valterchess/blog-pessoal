@@ -50,11 +50,11 @@ public class PostagemController {
     
     //deleta um recurso existente, caso o recurso não exista retorna um notFound
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deletaPostagem(@PathVariable long id) {
-        if (!postagemRepository.existsById(id)) {
-            return ResponseEntity.notFound().build();
-        }
-        postagemRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
+	public ResponseEntity<?> deletaPostagem(@PathVariable long id) {
+        return  postagemRepository.findById(id).
+        map(checagem -> {
+            postagemRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }).orElse(ResponseEntity.notFound().build());
     }
 }
