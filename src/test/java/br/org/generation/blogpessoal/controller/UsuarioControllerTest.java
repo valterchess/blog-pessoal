@@ -56,8 +56,31 @@ public class UsuarioControllerTest {
         //assertEquals(requisicao.getBody().getNome(), resposta.getBody().getNome());
         //assertEquals(requisicao.getBody().getUsuario(), resposta.getBody().getUsuario());
     }
+
     @Test
     @Order(3)
+    @DisplayName("Alterar um Usuário")
+    public void deveAtualizarUmUsuario() {
+
+        Optional<Usuario> usuarioCreate = service.cadastrarUsuario(new Usuario(0L,
+                "Juliana Andrews", "juliana_andrews@email.com.br", "juliana123"));
+
+        Usuario usuarioUpdate = new Usuario(usuarioCreate.get().getId(),
+                "Juliana Andrews Ramos", "juliana_ramos@email.com.br", "juliana123");
+
+        HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuarioUpdate);
+
+        ResponseEntity<Usuario> resposta = template
+                .withBasicAuth("root", "root")
+                .exchange("/usuarios/atualizar", HttpMethod.PUT, requisicao, Usuario.class);
+
+        assertEquals(HttpStatus.OK, resposta.getStatusCode());
+        assertEquals(usuarioUpdate.getNome(), resposta.getBody().getNome());
+        assertEquals(usuarioUpdate.getUsuario(), resposta.getBody().getUsuario());
+    }
+
+    @Test
+    @Order(4)
     @DisplayName("deve Listar todos os Usuários")
     public void devemostrarTodosUsuarios(){
         service.cadastrarUsuario(new Usuario(0L, "João da Silva", "joao@email.com.br", "13465278"));
