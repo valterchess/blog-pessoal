@@ -29,6 +29,17 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioRepository.findAll());
     }
 
+    @GetMapping("/usuario/{usuario}")
+    public ResponseEntity<Optional<Usuario>> getByUsuario(@PathVariable String usuario){
+        return ResponseEntity.ok(usuarioRepository.findByUsuario(usuario));
+    }
+
+    @GetMapping("/nomes/{nome}")
+    public ResponseEntity<List<Usuario>> getByName(@PathVariable String nome){
+        return ResponseEntity.ok(usuarioRepository.findAllByNomeContainingIgnoreCase(nome));
+    }
+
+
     @PostMapping("/cadastrar")
     public ResponseEntity<Usuario> postUsuario(@Valid @RequestBody Usuario usuario){
         return usuarioService.cadastrarUsuario(usuario)

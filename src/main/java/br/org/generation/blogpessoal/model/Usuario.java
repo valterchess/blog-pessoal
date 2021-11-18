@@ -1,6 +1,7 @@
 package br.org.generation.blogpessoal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -26,6 +27,7 @@ public class Usuario {
     @Size(min = 8, message = "a senha deve conter pelo menos 8 caracteres")
     private String senha;
 
+    @ApiModelProperty(example = "email@email.com.br")
     @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL)
     @JsonIgnoreProperties("usuario")
     private List<Postagem> postagem;
