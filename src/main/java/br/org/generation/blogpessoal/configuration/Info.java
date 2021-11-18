@@ -8,7 +8,7 @@ public class Info {
     //metadata()
     protected static final String TITULO = "API - Blog Pessoal";
     protected static final String DESCRICAO = "Projeto API Spring - Blog Pessoal";
-    protected static final String VERSAO = "1.0.0";
+    protected static final String VERSAO = "1.0.1";
     protected static final String LICENCE = "Apache License Version 2.0";
     protected static final String LICENCE_URL = "http://github.com/valterchess";
 
@@ -25,5 +25,6 @@ public class Info {
     protected static final String PROIBIDO = "Proibido!";
     protected static final String NAO_ENCONTRADO = "Não encontrado";
     protected static final String ERRO = "Erro!";
+    protected static final String REMOVIDO = "Removido!";
 
 }
