@@ -3,6 +3,7 @@ package br.org.generation.blogpessoal.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class TemaController {
     @GetMapping("/{id}")
     public ResponseEntity<Tema> getById(@PathVariable long id) {
         return temaRepository.findById(id)
-        .map(resp -> ResponseEntity.ok(resp))
+        .map(ResponseEntity::ok)
         .orElse(ResponseEntity.notFound().build());
     }
 
@@ -36,7 +37,7 @@ public class TemaController {
 
     @PostMapping
     public ResponseEntity<Tema> postTema(@RequestBody Tema tema){
-        return ResponseEntity.ok(temaRepository.save(tema));
+        return ResponseEntity.status(HttpStatus.CREATED).body(temaRepository.save(tema));
     }
 
     @PutMapping

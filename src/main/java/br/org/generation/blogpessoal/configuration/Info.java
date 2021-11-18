@@ -8,14 +8,14 @@ public class Info {
     //metadata()
     protected static final String TITULO = "API - Blog Pessoal";
     protected static final String DESCRICAO = "Projeto API Spring - Blog Pessoal";
-    protected static final String VERSAO = "1.0.1";
+    protected static final String VERSAO = "1.0.2";
     protected static final String LICENCE = "Apache License Version 2.0";
     protected static final String LICENCE_URL = "http://github.com/valterchess";
 
     //contact()
     protected static final String NOME = "Valter Silva";
     protected static final String GITHUB = "http://github.com/valterchess";
-    protected static final String EMAIL = "valterrekabano07@gmail.com";
+    protected static final String EMAIL = "valter.silva.dev@gmail.com";
 
     //responseMessage()
     protected static final String SUCESSO = "Sucesso!";
